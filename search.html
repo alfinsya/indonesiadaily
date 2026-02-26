@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Search - Indonesia Daily</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block px-0">
+        <div class="row align-items-center bg-dark px-lg-5">
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-n2">
+                        <li class="nav-item border-right border-secondary">
+                            <a class="nav-link text-body small" href="#" id="currentDate"></a>
+                        </li>
+                        <li class="nav-item border-right border-secondary" id="registerItem">
+                            <a class="nav-link text-body small" href="register.html">Register</a>
+                        </li>
+                        <li class="nav-item" id="loginItem">
+                            <a class="nav-link text-body small" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item border-right border-secondary d-none" id="userItem">
+                            <span class="nav-link text-body small" id="username"></span>
+                        </li>
+                        <li class="nav-item d-none" id="logoutItem">
+                            <a class="nav-link text-body small" href="#" onclick="logout()">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 text-right d-none d-md-block">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-auto mr-n2">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://twitter.com/indonesiadaily" target="_blank"><small class="fab fa-twitter"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://facebook.com/indonesiadaily" target="_blank"><small class="fab fa-facebook-f"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://linkedin.com/company/indonesiadaily" target="_blank"><small class="fab fa-linkedin-in"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://instagram.com/indonesiadaily" target="_blank"><small class="fab fa-instagram"></small></a>
+                        </li>
+                       <li class="nav-item">
+                            <a class="nav-link text-body" href="https://mail.google.com/mail/u/0/" target="_blank"><small class="fa fa-envelope"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://youtube.com/@indonesiadaily" target="_blank"><small class="fab fa-youtube"></small></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+<!-- Navbar Start -->
+<div class="container-fluid bg-white px-4 shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
+
+        <!-- LOGO KIRI (MEPET) -->
+        <a href="index.html" class="navbar-brand mr-5">
+            <img src="img/logo.png" alt="IndonesiaDaily" style="height: 45px;">
+        </a>
+
+        <!-- TOGGLER -->
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- MENU -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+            <!-- MENU TENGAH -->
+            <div class="navbar-nav mx-auto text-uppercase font-weight-bold">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="news.html" class="nav-item nav-link">News</a>
+                <a href="contact.html" class="nav-item nav-link">About Us</a>
+            </div>
+
+<!-- SEARCH KANAN -->
+<form action="search.html" method="get">
+    <div class="input-group d-none d-lg-flex" style="width: 260px;">
+        <input type="text" name="q" class="form-control" placeholder="Cari berita...">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
+
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->
+    
+    
+
+    <!-- Search Section -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bg-white border p-4 mb-4">
+                        <h2 class="text-uppercase font-weight-bold mb-3">Search News</h2>
+                        <form action="search.html" method="get">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q" placeholder="Enter keywords..." value="">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary px-4" type="submit">
+                                        <i class="fa fa-search"></i> Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Results -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="col-12">
+                        <h4 class="text-uppercase font-weight-bold mb-4">Search Results</h4>
+                    </div>
+                    <div id="searchResultsRow">
+
+                <!-- News Item 1 -->
+                <div class="col-12 mb-3">
+                    <a href="article/perhutani-majalengka.html" style="text-decoration: none; color: inherit;">
+                        <div class="d-flex align-items-center bg-white border p-3">
+                            <img src="img/imgnews-700x435-5.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                            <div class="pl-3 w-100">
+                                <div class="mb-2">
+                                    <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Economy</span>
+                                    <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 26, 2026</small>
+                                </div>
+                                <h5 class="font-weight-bold text-uppercase text-secondary">
+                                    Perhutani KPH Majalengka Perkuat Sinergi dengan Kodim 0617 Majalengka
+                                </h5>
+                                <p class="m-0">Perhutani KPH Majalengka memperkuat sinergi dengan Kodim 0617 Majalengka untuk mendukung pemberdayaan ekonomi desa sekitar hutan...</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- News Item 2 -->
+                <div class="col-12 mb-3">
+                    <a href="article/bojan-hodak.html" style="text-decoration: none; color: inherit;">
+                        <div class="d-flex align-items-center bg-white border p-3">
+                            <img src="img/news-700x435-2.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                            <div class="pl-3 w-100">
+                                <div class="mb-2">
+                                    <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Sports</span>
+                                    <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                                </div>
+                                <h5 class="font-weight-bold text-uppercase text-secondary">
+                                    Pertimbangan Bojan Ogah Buru-buru Mainkan Layvin Kurzawa
+                                </h5>
+                                <p class="m-0">Pelatih Persib Bandung, Bojan Hodak, menjelaskan alasan belum menurunkan bek kiri asal Prancis, Layvin Kurzawa...</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- News Item 3 -->
+                <div class="col-12 mb-3">
+                    <a href="article/berita1.html" style="text-decoration: none; color: inherit;">
+                        <div class="d-flex align-items-center bg-white border p-3">
+                            <img src="img/01.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                            <div class="pl-3 w-100">
+                                <div class="mb-2">
+                                    <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Education</span>
+                                    <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Nov 26, 2025</small>
+                                </div>
+                                <h5 class="font-weight-bold text-uppercase text-secondary">
+                                    Mahasiswa UPI Purwakarta Kenalkan Cara Berpikir Komputasional
+                                </h5>
+                                <p class="m-0">Mahasiswa UPI Purwakarta Kenalkan Cara Berpikir Komputasional dan Teknologi Digital kepada Siswa SDIT Cendekia...</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- News Item 4 -->
+                <div class="col-12 mb-3">
+                    <a href="article/berita2.html" style="text-decoration: none; color: inherit;">
+                        <div class="d-flex align-items-center bg-white border p-3">
+                            <img src="img/berita2.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                            <div class="pl-3 w-100">
+                                <div class="mb-2">
+                                    <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Economy</span>
+                                    <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 26, 2026</small>
+                                </div>
+                                <h5 class="font-weight-bold text-uppercase text-secondary">
+                                    Perhutani KPH Banten Dukung Program Strategis Nasional KDMP
+                                </h5>
+                                <p class="m-0">Perhutani KPH Banten menjalin sinergi untuk mendukung Program Strategis Nasional pembangunan Koperasi Desa Merah Putih...</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- News Item 5 -->
+                <div class="col-12 mb-3">
+                    <a href="article/berita3.html" style="text-decoration: none; color: inherit;">
+                        <div class="d-flex align-items-center bg-white border p-3">
+                            <img src="img/berita3.jpeg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                            <div class="pl-3 w-100">
+                                <div class="mb-2">
+                                    <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Politics</span>
+                                    <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                                </div>
+                                <h5 class="font-weight-bold text-uppercase text-secondary">
+                                    6 Kesaksian Ahok Blak-blakan di Sidang Kasus Minyak
+                                </h5>
+                                <p class="m-0">Mantan Gubernur DKI Jakarta memberikan kesaksian di Pengadilan Tipikor Jakarta dalam sidang kasus dugaan korupsi pengadaan minyak...</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- News Item 6 -->
+                <div class="col-12 mb-3">
+                    <a href="article/masih-ingat-resbob.html" style="text-decoration: none; color: inherit;">
+                        <div class="d-flex align-items-center bg-white border p-3">
+                            <img src="img/news-700x435-3.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                            <div class="pl-3 w-100">
+                                <div class="mb-2">
+                                    <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Crime</span>
+                                    <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                                </div>
+                                <h5 class="font-weight-bold text-uppercase text-secondary">
+                                    Masih Ingat Resbob? Tersangka Kasus Penghinaan Suku Sunda
+                                </h5>
+                                <p class="m-0">Polisi berhasil menangkap tersangka berinisial RB alias Resbob yang diduga melakukan penghinaan terhadap suku Sunda dan Viking Persib...</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- News Item 7 -->
+                <div class="col-12 mb-3">
+                    <a href="article/longsor-bandung.html" style="text-decoration: none; color: inherit;">
+                        <div class="d-flex align-items-center bg-white border p-3">
+                            <img src="img/akang.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                            <div class="pl-3 w-100">
+                                <div class="mb-2">
+                                    <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Environment</span>
+                                    <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                                </div>
+                                <h5 class="font-weight-bold text-uppercase text-secondary">
+                                    Warga Korban Longsor Cisarua Sempat Lihat 2 Orang Diduga Anggota TNI
+                                </h5>
+                                <p class="m-0">Bencana tanah longsor yang melanda kawasan Cisarua, Kabupaten Bandung Barat, telah menewaskan sedikitnya 7 orang...</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                    </div>
+                </div>
+                
+                <!-- SIDEBAR START -->
+                <div class="col-lg-4">
+                    <!-- Social Follow Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-3">
+                            <a href="https://facebook.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                                <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">85,234 Fans</span>
+                            </a>
+                            <a href="https://twitter.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                                <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">67,890 Followers</span>
+                            </a>
+                            <a href="https://linkedin.com/company/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+                                <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">34,567 Connects</span>
+                            </a>
+                            <a href="https://instagram.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                                <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">123,456 Followers</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Social Follow End -->
+
+                    <!-- Trending News Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Trending News</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-3">
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <a href="article/perhutani-majalengka.html">
+                                    <img src="img/imgnews-700x435-5.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                                </a>
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary news-badge mr-2" href="">Economy</a>
+                                        <a class="text-body" href=""><small>Jan 26, 2026</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/perhutani-majalengka.html">Perhutani KPH Majalengka Perkuat Sinergi...</a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <a href="article/bojan-hodak.html">
+                                    <img src="img/news-700x435-2.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                                </a>
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary news-badge mr-2" href="">Sports</a>
+                                        <a class="text-body" href=""><small>Jan 27, 2026</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/bojan-hodak.html">Pertimbangan Bojan Ogah Buru-buru Mainkan...</a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <a href="article/masih-ingat-resbob.html">
+                                    <img src="img/news-700x435-3.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                                </a>
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary news-badge mr-2" href="">Law & Crime</a>
+                                        <a class="text-body" href=""><small>Jan 20, 2026</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/masih-ingat-resbob.html">Masih Ingat Resbob? Tersangka Kasus...</a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <a href="article/longsor-bandung.html">
+                                    <img src="img/akang.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                                </a>
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary news-badge mr-2" href="">Environment</a>
+                                        <a class="text-body" href=""><small>Jan 26, 2026</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/longsor-bandung.html">Warga Korban Longsor Cisarua Sempat Lihat...</a>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                                <a href="article/berita2.html">
+                                    <img src="img/berita2.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                                </a>
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                    <div class="mb-2">
+                                        <a class="badge badge-primary news-badge mr-2" href="">Economy</a>
+                                        <a class="text-body" href=""><small>Jan 26, 2026</small></a>
+                                    </div>
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/berita2.html">Perhutani KPH Banten Dukung Program Strategis...</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Trending News End -->
+                </div>
+                <!-- SIDEBAR END -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+<div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
+    <div class="row py-4">
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Indonesia Daily</h5>
+            <p class="font-weight-medium text-white"><i class="fa fa-map-marker-alt mr-2"></i>Jl. Merdeka No. 123, Jakarta Pusat, Indonesia 10110</p>
+            <p class="font-weight-medium text-white"><i class="fa fa-phone-alt mr-2"></i>+62 21 1234 5678</p>
+            <p class="font-weight-medium text-white"><i class="fa fa-envelope mr-2"></i><a href="https://mail.google.com/mail/?view=cm&fs=1&to=IndonesiaDaily33@gmail.com" target="_blank" class="text-white">IndonesiaDaily33@gmail.com</a></p>
+            <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
+            <div class="d-flex justify-content-start">
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://twitter.com/indonesiadaily" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://facebook.com/indonesiadaily" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://linkedin.com/company/indonesiadaily" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://instagram.com/indonesiadaily" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square" href="https://youtube.com/@indonesiadaily" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Berita Populer</h5>
+            <div class="mb-3">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Economy</a>
+                    <a class="text-body" href=""><small>Jan 26, 2026</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="/article/perhutani-majalengka.html">Perhutani KPH Majalengka Perkuat Sinergi dengan Kodim...</a>
+            </div>
+            <div class="mb-3">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Sports</a>
+                    <a class="text-body" href=""><small>Jan 27, 2026</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="/article/bojan-hodak.html">Pertimbangan Bojan Ogah Buru-buru Mainkan Layvin Kurzawa...</a>
+            </div>
+            <div class="">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Politics</a>
+                    <a class="text-body" href=""><small>Jan 27, 2026</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="/article/berita3.html">6 Kesaksian Ahok Blak-blakan di Sidang Kasus Minyak...</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Link Cepat</h5>
+            <div class="d-flex flex-column">
+                <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Beranda</a>
+                <a class="text-white mb-2" href="news.html"><i class="fa fa-angle-right mr-2"></i>Berita Terkini</a>
+                <a class="text-white mb-2" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Tentang Kami</a>
+                <a class="text-white mb-2" href="login.html"><i class="fa fa-angle-right mr-2"></i>Login</a>
+                <a class="text-white mb-2" href="register.html"><i class="fa fa-angle-right mr-2"></i>Daftar</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Kategori</h5>
+            <div class="d-flex flex-wrap m-n1">
+                <a href="" class="btn btn-sm btn-secondary m-1">Politik</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Ekonomi</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Olahraga</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Teknologi</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Pendidikan</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Kesehatan</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Lingkungan</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Hukum</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
+    <p class="m-0 text-center text-white">&copy; 2026 <a href="index.html" class="text-primary">Indonesia Daily</a>. Portal Berita Terpercaya Indonesia. All Rights Reserved.</p>
+</div>
+<!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    
+    <!-- Authentication Script -->
+    <script src="js/auth.js"></script>
+
+    <script>
+    const dateElement = document.getElementById("currentDate");
+
+    const today = new Date();
+
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    const formattedDate = today.toLocaleDateString('en-US', options);
+
+    dateElement.textContent = formattedDate;
+    </script>
+</body>
+</html>

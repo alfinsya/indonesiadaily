@@ -1,0 +1,2423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>News - IndonesiaDaily</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom CSS for Load More -->
+    <style>
+        .news-item {
+            display: block !important;
+        }
+
+        .news-item.hidden {
+            display: none !important;
+        }
+
+        #loadMoreBtn {
+            padding: 12px 40px;
+            font-weight: 600;
+            border-radius: 5px;
+        }
+
+        #loadMoreBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        #loadMoreBtn.hidden {
+            display: none !important;
+        }
+
+        /* Responsive News Items */
+        @media (max-width: 767.98px) {
+            .d-flex.align-items-center.bg-white.border.p-3 {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+
+            .d-flex.align-items-center.bg-white.border.p-3 img {
+                width: 100% !important;
+                height: auto !important;
+                max-height: 200px !important;
+                object-fit: cover !important;
+                margin-bottom: 10px !important;
+            }
+
+            .d-flex.align-items-center.bg-white.border.p-3 > div {
+                padding-left: 0 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block px-0">
+        <div class="row align-items-center bg-dark px-lg-5">
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-n2">
+                        <li class="nav-item border-right border-secondary">
+                            <a class="nav-link text-body small" href="#" id="currentDate"></a>
+                        </li>
+                        <li class="nav-item border-right border-secondary" id="registerItem">
+                            <a class="nav-link text-body small" href="register.html">Register</a>
+                        </li>
+                        <li class="nav-item" id="loginItem">
+                            <a class="nav-link text-body small" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item border-right border-secondary d-none" id="userItem">
+                            <span class="nav-link text-body small" id="username"></span>
+                        </li>
+                        <li class="nav-item d-none" id="logoutItem">
+                            <a class="nav-link text-body small" href="#" onclick="logout()">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 text-right d-none d-md-block">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-auto mr-n2">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://twitter.com/indonesiadaily" target="_blank"><small class="fab fa-twitter"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://facebook.com/indonesiadaily" target="_blank"><small class="fab fa-facebook-f"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://linkedin.com/company/indonesiadaily" target="_blank"><small class="fab fa-linkedin-in"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://instagram.com/indonesiadaily" target="_blank"><small class="fab fa-instagram"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://mail.google.com/mail/u/0/" target="_blank"><small class="fa fa-envelope"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://youtube.com/@indonesiadaily" target="_blank"><small class="fab fa-youtube"></small></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+<!-- Navbar Start -->
+<div class="container-fluid bg-white px-4 shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
+
+        <!-- LOGO KIRI (MEPET) -->
+        <a href="index.html" class="navbar-brand mr-5">
+            <img src="img/logo.png" alt="IndonesiaDaily" style="height: 45px;">
+        </a>
+
+        <!-- TOGGLER -->
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- MENU -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+            <!-- MENU TENGAH -->
+            <div class="navbar-nav mx-auto text-uppercase font-weight-bold">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="news.html" class="nav-item nav-link active">News</a>
+                <a href="contact.html" class="nav-item nav-link">About Us</a>
+            </div>
+
+<!-- SEARCH KANAN -->
+<form action="search.html" method="get">
+    <div class="input-group d-flex" style="width: 100%; max-width: 260px;">
+        <input type="text" name="q" class="form-control" placeholder="Cari berita...">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
+
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->
+
+<!-- News Section -->
+<div class="container-fluid mt-5 pt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- LIST VIEW NEWS -->
+                <div class="col-12">
+                    <div class="section-title mb-3 mt-4">
+                        <h4 class="m-0 text-uppercase font-weight-bold">All News</h4>
+                    </div>
+                </div>
+
+                <!-- NEWS ITEMS CONTAINER -->
+                <div id="newsContainer">
+
+            <!-- NEWS ITEM LIST 1 -->
+            <div class="col-12 mb-3">
+                <a href="article/perhutani-majalengka.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/imgnews-700x435-5.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Ekonomi</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 26, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Majalengka Perkuat Sinergi dengan Kodim 0617 Majalengka
+                            </h5>
+                            <p class="m-0">Perhutani KPH Majalengka memperkuat sinergi dengan Kodim 0617 Majalengka untuk mendukung pemberdayaan ekonomi desa sekitar hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 2 -->
+            <div class="col-12 mb-3">
+                <a href="article/bojan-hodak.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/news-700x435-2.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Olahraga</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Pertimbangan Bojan Ogah Buru-buru Mainkan Layvin Kurzawa
+                            </h5>
+                            <p class="m-0">Pelatih Persib Bandung, Bojan Hodak, menjelaskan alasan belum menurunkan bek kiri asal Prancis, Layvin Kurzawa...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 3 -->
+            <div class="col-12 mb-3">
+                <a href="article/masih-ingat-resbob.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/news-700x435-3.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Hukum</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Masih Ingat Resbob? Tersangka Kasus Penghinaan Suku Sunda dan Viking
+                            </h5>
+                            <p class="m-0">Polisi berhasil menangkap tersangka berinisial RB alias Resbob yang diduga melakukan penghinaan terhadap suku Sunda dan Viking Persib...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 4 -->
+            <div class="col-12 mb-3">
+                <a href="article/longsor-bandung.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/news-700x435-4.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Warga Korban Longsor Cisarua Sempat Lihat 2 Orang Diduga Anggota TNI
+                            </h5>
+                            <p class="m-0">Bencana tanah longsor yang melanda kawasan Cisarua, Kabupaten Bandung Barat, telah menewaskan sedikitnya 7 orang...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 5 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita2.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita2.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Ekonomi</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Banten Dukung Program Strategis Nasional Pembangunan Koperasi Desa Merah Putih Di Kabupaten Lebak Banten
+                            </h5>
+                            <p class="m-0">Perhutani KPH Banten Dukung Program Strategis Nasional Pembangunan Koperasi Desa Merah Putih Di Kabupaten Lebak Banten   ...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 6 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita3.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita3.jpeg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Hukum</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                6 Kesaksian Ahok di Sidang kasus dugaan korupsi pengadaan minyak Pertamina
+                            </h5>
+                            <p class="m-0">Mantan Gubernur DKI Jakarta Basuki Tjahaja Purnama alias Ahok memberikan kesaksian di Pengadilan Tipikor Jakarta...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 7 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita1.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/01.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Pendidikan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i>Nov 26, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Mahasiswa UPI Purwakarta Kenalkan Cara Berpikir Komputasional dan Teknologi Digital kepada Siswa SDIT Cendekia
+                            </h5>
+                            <p class="m-0">Mahasiswa UPI Purwakarta Kenalkan Cara Berpikir Komputasional dan Teknologi Digital kepada Siswa SDIT Cendekia...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 8 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita4.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita4.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Hukum</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 29, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Pemerintah Indonesia secara resmi mengumumkan kebijakan subsidi energi tahun 2026
+                            yang difokuskan pada rumah tangga berpenghasilan rendah
+                            </h5>
+                            <p class="m-0">Pemerintah Indonesia secara resmi mengumumkan kebijakan subsidi energi tahun 2026
+                            yang difokuskan pada rumah tangga berpenghasilan rendah serta pelaku Usaha Mikro, Kecil,
+                            dan Menengah (UMKM)...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 9 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita5.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita5.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Teknologi</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Pemerintah Indonesia terus mendorong percepatan transformasi digital nasional
+                            dengan memperluas jaringan 5G
+                            </h5>
+                            <p class="m-0">Pemerintah Indonesia terus mendorong percepatan transformasi digital nasional
+                            dengan memperluas jaringan 5G ke lebih dari 40 kota besar hingga akhir tahun 2026...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 10 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita6.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita6.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Ekonomi</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 30, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Pemerintah dan sejumlah lembaga ekonomi memproyeksikan pertumbuhan ekonomi Indonesia
+                            pada tahun 2026 akan mengalami penguatan dibandingkan tahun sebelumnya.
+                            </h5>
+                            <p class="m-0">Pemerintah dan sejumlah lembaga ekonomi memproyeksikan pertumbuhan ekonomi Indonesia
+                            pada tahun 2026 akan mengalami penguatan dibandingkan tahun sebelumnya....</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 11 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita7.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita7.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Teknologi</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                 Transformasi Digital Nasional Dipercepat, Pemerintah Fokus Penguatan SDM dan Infrastruktur Teknologi
+                            </h5>
+                            <p class="m-0">Pemerintah Indonesia terus mempercepat transformasi digital nasional
+                            sebagai bagian dari strategi pembangunan jangka menengah...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 12 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita8.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita8.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Ekonomi</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Ekonomi Digital Indonesia Terus Tumbuh, UMKM Jadi Penggerak Utama Pemulihan Nasional
+                            </h5>
+                            <p class="m-0">Pertumbuhan ekonomi digital di Indonesia menunjukkan tren positif
+                            dalam beberapa tahun terakhir. Digitalisasi dinilai menjadi salah satu faktor utama
+                            yang mendorong pemulihan ekonomi nasional,...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 13 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita9.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita9.jpeg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Olahraga</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Timnas Indonesia Tunjukkan Performa Menjanjikan, Targetkan Prestasi Lebih Tinggi di Kancah Asia                            </h5>
+                            <p class="m-0">Tim Nasional Indonesia menunjukkan perkembangan signifikan
+                            dalam beberapa pertandingan terakhir.
+                            Performa solid yang ditampilkan para pemain
+                            menumbuhkan optimisme baru...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 14 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita10.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita10.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Teknologi</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Transformasi Digital di Indonesia Makin Pesat,
+                            UMKM Mulai Manfaatkan Teknologi Berbasis Cloud
+                            </h5>
+                            <p class="m-0">Perkembangan teknologi digital di Indonesia
+                            terus menunjukkan tren positif. Salah satu sektor
+                            yang paling merasakan dampaknya adalah UMKM...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 15 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita11.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita11.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Bandung Selatan Dukung Program PPL Siswa SMA Muhammadiyah 4 Bandung
+                            </h5>
+                            <p class="m-0">Perhutani KPH Bandung Selatan mendukung program Praktik Kerja Lapangan (PPL) siswa SMA Muhammadiyah 4 Bandung...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 16 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita12.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita12.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Peringatan Serikat Karyawan Perhutani Bandung Selatan Dibarengi Bantuan Bibit
+                            </h5>
+                            <p class="m-0">Serikat Karyawan (Sekar) Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bandung Selatan peringati hari jadi Sekar bertema “Perusahaan Eksis, Karyawan Sejahtera” yang ke-21...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 17 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita13.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita13.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 16, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Dampingi Kunjungan Menteri Lingkungan Hidup ke Hulu Sungai Citarum
+                            </h5>
+                            <p class="m-0">Menteri Lingkungan Hidup Republik Indonesia, Hanif Faisol Nurofiq, melakukan kunjungan kerja ke kawasan hulu Sungai Citarum/Situ Cisanti dan sekitarnya...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 18 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita14.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita14.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 3, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bandung Utara dan Komunitas Penat Lakukan Aksi Nyata Tanam Pohon
+                            </h5>
+                            <p class="m-0"> Perhutani Kesatuan Pemangkuan Hutan (KPH) Bandung Utara melaksanakan penanaman pohon bersama komunitas Pendaki Napas Tua (Penat) di wilyah hutan Resort Pemangkuan Hutan (RPH) Cibodas...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 19 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita15.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita15.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Terima Kegiatan PKL Mahasiswa Universitas Terbuka di Bandung
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bandung Utara menerima kegiatan Praktek Kerja Lapang (PKL) mahasiswi Universitas Terbuka pada Selasa...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 20 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita16.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita16.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bandung Utara Lepas Mahasiswa UNPAS Usai Rampungkan PKL
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bandung Utara resmi melepas dua mahasiswa Universitas Pasundan (UNPAS) Bandung yang telah menyelesaikan kegiatan Praktek Kerja Lapang...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 21 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita17.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita17.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 15, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Bandung Utara Perkuat Koordinasi Pengelolaan Wisata Hutan dengan Mitra
+                            </h5>
+                            <p class="m-0">Mantan Gubernur DKI Jakarta Basuki Tjahaja Purnama alias Ahok memberikan kesaksian di Pengadilan Tipikor Jakarta...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 22 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita18.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita18.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Bandung Utara Dukung Aksi Penanaman “Rindu Rindang Kota Bandung”
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bandung Utara melalui Saka Wanabakti Kota Bandung turut berpartisipasi dalam kegiatan aksi penanaman bertema “Rindu Rindang Kota Bandung: Kolaborasi Kami untuk Bumi...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 23 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita19.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita19.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bersama Stakeholder Lakukan Patroli Siaga Bencana Alam di Cikole
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bandung Utara melaksanakan patroli gabungan dalam rangka mengantisipasi gangguan keamanan hutan (Gukamhut)...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 24 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita20.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita20.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 25, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bersama Stakeholder Tekan PKS Pengelolaan Wisata Ciwangun Indah Camp Di Bandung
+                            </h5>
+                            <p class="m-0">Perhutani Kesatuan Pemangkuan Hutan (KPH) Bandung Utara menandatangani Perjanjian Kerja Sama (PKS) dengan Perseroan Terbatas (PT) Ciwangun Indah Cemerlang...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 25 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita21.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita21.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 26, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Bandung Utara Perkuat Sinergi dengan TNI Dukung Pembentukan Koperasi Kelurahan Merah Putih
+                            </h5>
+                            <p class="m-0">Kesatuan Pemangkuan Hutan (KPH) Bandung Utara melaksanakan koordinasi dalam rangka pengajuan proses Koperasi Kelurahan Merah Putih...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 26 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita22.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita22.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Forestry</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 17, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Banten Gelar Job Training Tebangan 2026
+                            </h5>
+                            <p class="m-0">Perhutani Kesatuan Pemangkuan Hutan (KPH) Banten menggelar Job Training Tebangan dalam mengawali proses produksi tebangan Tahun 2026...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 27 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita23.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita23.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Keamanan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Jalin Sinergi, Perhutani Bogor Kunjungi Polsek Tenjo
+                            </h5>
+                            <p class="m-0">Perhutani Kesatuan Pemangkuan Hutan (KPH) Bogor menjalin sinergitas dalam menjaga keamanan hutan dengan mengunjungi Polsek Tenjo...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 28 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita24.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita24.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Budaya</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Bogor Bersama LMDH dan KTH Gelar Pentas Seni SymForest
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bogor menjadi lokasi penyelenggaraan Pentas Seni SymForest yang diinisiasi oleh Kelompok Tani Hutan (KTH)...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 29 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita25.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita25.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Governance</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bogor Terima Kunjungan DPRD Komisi IV Provinsi Banten di Parung Panjang
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bogor menerima kunjungan Dewan Perwakilan Rakyat Daerah (DPRD) Komisi IV Provinsi Banten...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita26.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita26.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 8, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bogor Hadiri Tanam Jagung Serentak Polri di Cigombong
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bogor hadiri Panen Jagung Serentak Kuartal I Kepolisian Republik Indonesia (Polri) di Desa Tugu Jaya...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita27.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita27.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Ekonomi</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 8, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bogor Bersama CV. Emir Tusin Dampingi LMDH Binaan Untuk Tingkatkan Produktifitas
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bogor bersama CV. Emir Tusin melakukan pendampingan kepada Lembaga Masyarakat Desa Hutan (LMDH) binaan untuk meningkatkan produktifitas...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita28.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita28.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">      
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 26, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bogor Dukung Bitagure 5 di Parung Panjang, Tanamkan Generasi Muda Cinta Lingkungan
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bogor mendukung pelaksanaan kegiatan Bitagure ke-5 yang diselenggarakan di Kawasan Hutan Dengan Tujuan Khusus...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita29.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita29.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Pererat Sinergisitas, Perhutani KPH Bogor Silaturahmi ke Kodim 0621 Kabupaten Bogor
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Bogor melakukan silaturahmi dengan Kodim 0621 Kabupaten Bogor untuk mempererat sinergisitas dalam menjaga keamanan hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita30.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita30.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 9, 2026</small>
+                            </div> 
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Ciamis Serahkan Bantuan Bibit Kepada Paguyuban Peduli Alam dan Lingkungan Ciamis
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Ciamis menyerahkan bantuan bibit kepada Paguyuban Peduli Alam dan Lingkungan Ciamis...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita31.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita31.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 28, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Ciamis Perkuat Sinergitas Bersama Setda Kota Banjar Terkait Mitigasi Bencana
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Ciamis perkuat sinergitas bersama Setda Kota Banjar terkait mitigasi bencana...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita32.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita32.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 15, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Sinergi Keamanan dan Ekonomi, Perhutani KPH Cianjur Sambangi Dandim 0608
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Cianjur sambangi Dandim 0608 untuk memperkuat sinergitas dalam keamanan dan ekonomi kerakyatan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita33.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita33.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 05, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Tingkatkan Keamanan Wisatawan, Perhutani Cianjur dan Polsek Tanggeung Pastikan Keamanan Wisatawan di Curug Citambur
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Cianjur bekerja sama dengan Polsek Tanggeung untuk meningkatkan keamanan wisatawan di Curug Citambur...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita34.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita34.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 09, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perkuat Sinergi, Perhutani Bersama Kejari Lakukan Sosialisasi Penanganan Hukum Perdata dan Tata Usaha Negara
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Cianjur bekerja sama dengan Kejari Cianjur untuk melakukan sosialisasi penanganan hukum perdata dan tata usaha negara...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita35.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita35.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 05, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Tingkatkan Kewaspadaan Musim Hujan, Perhutani Cianjur Bersama BPBD dan Pemdes Cidadap Gelar Sosialisasi Mitigasi Partisipatif
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Cianjur bekerja sama dengan BPBD dan Pemdes Cidadap untuk meningkatkan kewaspadaan masyarakat terhadap bencana alam di musim hujan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita36.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita36.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 21, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Cianjur Lakukan Konsolidasi dan Pengamanan Lahan Kompensasi di Sukanagara
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Cianjur melakukan konsolidasi dan pengamanan lahan kompensasi di wilayah Sukanagara...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita37.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita37.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 22, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Tingkatkan Kualitas SDM, Perhutani KPH Cianjur Lepas Mahasiswi Ilmu Komunikasi UIMA Pasca Magang
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Cianjur melepas mahasiswi Ilmu Komunikasi Universitas Indonesia (UIMA) pasca magang di KPH Cianjur...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita38.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita38.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 26, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Sinergi Perhutani Cianjur, TNI, dan Pemkab Perkuat Ekonomi Desa melalui Koperasi Merah Putih
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Cianjur bekerja sama dengan TNI dan Pemerintah Kabupaten Cianjur untuk memperkuat ekonomi desa melalui koperasi merah putih...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita39.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita39.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Kerja Sama</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bersama PGE Karaha Teken PKS Pemanfaatan Air di Garut
+                            </h5>
+                            <p class="m-0">Perhutani Kesatuan Pemangkuan Hutan (KPH) Garut bersama Pertamina Geothermal Energy Area Karaha teken Perjanjian Kerjasama pemanfaatan Air...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita40.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita40.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani dan LMDH Gelar Patroli Bersama Lindungi Hutan di Garut
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Garut bekerja sama dengan Lembaga Masyarakat Desa Hutan (LMDH) melaksanakan patroli bersama untuk menjaga keamanan hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita41.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita41.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bersama Pertamina Area Karaha Lakukan Penanaman di Garut
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Garut bekerja sama dengan Pertamina Geothermal Energy Area Karaha melakukan penanaman pohon di wilayah hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita42.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita42.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Dukung Panen Raya Jagung Kuartal I Tahun 2026 di Garut
+                            </h5>
+                            <p class="m-0">Sebagai wujud dukungan terhadap program Swasembada Pangan Nasional, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Garut bersama Forum Koordinasi Pimpinan Daerah (Forkopimda) Kabupaten Garut melaksanakan kegiatan Panen Raya Jagung Serentak...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita43.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita43.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Salurkan Bantuan Bibit Untuk Paguyuban Warga Darangdan
+                            </h5>
+                            <p class="m-0">Sebagai bentuk dukungan terhadap kemandirian masyarakat serta pelestarian hutan berbasis partisipasi masyarakat, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Garut menyalurkan bantuan bibit...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita44.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita44.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 18, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Indramayu Perkuat Kemitraan dengan Masyarakat Desa Hutan
+                            </h5>
+                            <p class="m-0">Sebagai wujud dukungan terhadap program Swasembada Pangan Nasional, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Indramayu bersama Forum Koordinasi Pimpinan Daerah (Forkopimda) Kabupaten Indramayu melaksanakan kegiatan Perkuatan Kemitraan dengan Masyarakat Desa Hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita46.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita46.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 26, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Indramayu Serahkan Sertifikat Magang Kepada Mahasiswi Universitas Wiralodra
+                            </h5>
+                            <p class="m-0"> Perum  Perhutani Kesatuan Pemangkuan Hutan (KPH) Indramayu menyerahkan sertifikat telah mengikuti magang kepada tiga  Mahasiswi Fakultas Ekonomi Univeristas Wiralodra Indramayu...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita47.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita47.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Pendidikan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 23, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Menjadi Narasumber Dalam Acara FGD di Universitas Negeri Jakarta
+                            </h5>
+                            <p class="m-0"> Sebagai langkah strategis memperkuat Indeks Pembangunan Manusia (IPM) sekaligus mendorong ketahanan pangan daerah, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Indramayu turut serta dalam Pembahasan Posisi...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita48.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita48.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Indramayu Bersama Stakeholder Gelar Patroli Siaga Bencana
+                            </h5>
+                            <p class="m-0">Dalam rangka mitigasi terjadinya gangguan keamanan hutan (Gukamhut) bencana alam dan pohon rawan tumbang, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Indramayu menggelar patroli...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita49.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita49.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Kegiatan Sosial</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Majalengka Dukung Kegiatan Sosial Harlah ke-21 Sekar Perhutani
+                            </h5>
+                            <p class="m-0"> Hari Lahir (Harlah) Serikat Karyawan (Sekar) Ke-21 Dewan Pengurus Daerah (DPD) Perhutani Kesatuan Pemangkuan Hutan (KPH) Majalengka mengadakan tasyakuran dan pemberian Tali Asih...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita50.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita50.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">FGD</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 21, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Majalengka Gelar FGD Bersama Pengelola Wisata Batu Lawang di Kawasan Hutan
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Majalengka menyelenggarakan kegiatan Focus Group Discussion (FGD) bersama pengelola Wisata Batu Lawang ...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita51.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita51.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Hukum</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 26, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Majalengka dan Kejari Majalengka Perkuat Kerja Sama Bidang Hukum
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Majalengka bersama Kejaksaan Negeri (Kejari) Majalengka melakukan kerja sama bidang hukum dalam rangka peningkatan kualitas pengelolaan hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita52.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita52.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Penanaman Pohon</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Kuningan Bersama Polres Kuningan Rencanakan Penanaman Pohon Bersama
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Kuningan bersama Polres Kuningan merencanakan kegiatan penanaman pohon bersama di kawasan hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita53.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita53.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Keamanan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Kuningan Perkuat Koordinasi Lintas Sektor bersama Denpom Kuningan
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Kuningan bersama Denpom Kuningan melakukan koordinasi lintas sektor dalam rangka peningkatan keamanan kawasan hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita54.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita54.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Mitigasi Bencana</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 11, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Hadapi Tahun 2026, Perhutani KPH Kuningan Bersama BPBD Kuningan Perkuat Mitigasi Bencana
+                            </h5>
+                            <p class="m-0">Sebagai wujud dukungan terhadap program Swasembada Pangan Nasional, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Kuningan bersama Badan Penanggulangan Bencana Daerah (BPBD) Kabupaten Kuningan melaksanakan kegiatan mitigasi bencana...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita55.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita55.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Pangan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Kuningan dan Yonif TP 839 Perkuat Sinergi Bahas Ketahanan Pangan
+                            </h5>
+                            <p class="m-0">Sebagai wujud dukungan terhadap program Swasembada Pangan Nasional, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Kuningan bersama Yonif TP 839 melaksanakan kegiatan sinergi dalam membahas ketahanan pangan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita56.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita56.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 25, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Kuningan Melakukan Pelantikan Tapak Rimba (Petara) Tahun 2026 Berlangsung Sukses
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Kuningan mendukung pelaksanaan Kegiatan Pelantikan Tapak Rimba (Petara) Tahun 2026 telah dilaksanakan dengan lancar pada Minggu...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita57.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita57.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Produksi Kayu</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Kuningan Fokus Memproduksi Kayu di Awal Tahun 2026 dan Lakukan Cutting Test Tebangan
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Kuningan fokus memproduksi kayu di awal tahun 2026. KPH Kuningan juga melakukan cutting test tebangan untuk memastikan kualitas kayu yang dihasilkan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita58.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita58.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Getah Pinus</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Kuningan Melakukan Pembinaan Rutin Produksi Getah Pinus di TPG Bagarurung BKPH Garawangi
+                            </h5>
+                            <p class="m-0">Perum Perhutani KPH Kuningan melaksanakan kegiatan Pembinaan Produksi Getah Pinus bertempat di Tempat Penimbunan Getah (TPG) Bagarurung Resort Pemangkuan Hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita59.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita59.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">KPH Kuningan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 18, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Kuningan Hadiri Peresmian Gedung Baru TBM Pondok Kata RZ dan Festival Kaulinan Barudak
+                            </h5>
+                            <p class="m-0">Perhutani Kesatuan Pemangkuan Hutan (KPH) Kuningan bersama Kepala Dinas Kearsipan dan Perpustakaan Kabupaten Kuningan turut menghadiri kegiatan peresmian gedung baru Taman Baca Masyarakat...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita60.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita60.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">KDMP</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Kuningan, Kodim 0615, dan Pemda Kuningan Sinergi Dukung Program KDMP
+                            </h5>
+                            <p class="m-0">Perhutani Kesatuan Pemangkuan Hutan (KPH) Kuningan bersama Kodim 0615 dan Pemda Kabupaten Kuningan melaksanakan sinergi dalam mendukung program Koperasi Desa Masyarakat Peduli (KDMP)...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita61.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita61.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 08, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Purwakarta Sosialisasikan Keamanan dan Kelestarian Hutan kepada Masyarakat
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta melalui jajaran Bagian Kesatuan Pemangkuan Hutan (BKPH) Pangkalan menggelar kegiatan komunikasi sosial bersama warga Desa Mekar Buana...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita62.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita62.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 14, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Purwakarta Sosialisasikan Skema KKP dan KKPP
+                            </h5>
+                            <p class="m-0">Sebagai wujud dukungan terhadap program Swasembada Pangan Nasional, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta bersama Forum Koordinasi Pimpinan Daerah (Forkopimda) Kabupaten Purwakarta melaksanakan kegiatan sosialisasi skema KKP dan KKPP...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita63.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita63.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">LMDH</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 13, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Purwakarta Fasilitasi Roadshow Paguyuban LMDH untuk Penguatan Kemitraan
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta melalui jajaran Bagian Kesatuan Pemangkuan Hutan (BKPH) Pangkalan menggelar kegiatan Roadshow Paguyuban LMDH untuk penguatan kemitraan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita64.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita64.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 12, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Purwakarta dan LMDH Gelar Patroli Bersama Cegah Gangguan Keamanan Hutan
+                            </h5>
+                            <p class="m-0">Sebagai wujud dukungan terhadap program Swasembada Pangan Nasional, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta bersama Forum Koordinasi Pimpinan Daerah (Forkopimda) Kabupaten Purwakarta melaksanakan kegiatan patroli bersama untuk mencegah gangguan keamanan hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita65.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita65.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 09, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Purwakarta Serahkan Sharing Kayu Jabon Kepada PT Java Unggul Sejahtera
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta melalui jajaran Bagian Kesatuan Pemangkuan Hutan (BKPH) Sadang menyerahkan sharing kayu jabon kepada PT Java Unggul Sejahtera...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita66.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita66.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 15, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Purwakarta Teken PKS Pemanfaatan Jasa Lingkungan Usaha Wisata Kuliner
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta menandatangani Perjanjian Kerja Sama (PKS) dengan PT Wisata Kuliner untuk pemanfaatan jasa lingkungan dalam pengembangan usaha wisata kuliner...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita67.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita67.png" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 23, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Menerima Kunjungan LMDH Tapak Jabar, Perkuat Sinergi Pengelolaan Hutan
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta menerima kunjungan kerja dari Lembaga Masyarakat Desa Hutan (LMDH) Tapak Jabar. Kunjungan ini bertujuan untuk memperkuat sinergi pengelolaan hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita68.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita68.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Audit PHL</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 24, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Purwakarta Laksanakan Closing Meeting PHL Tahun 2026
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta melaksanakan Closing Meeting PHL Tahun 2026. Kegiatan ini merupakan bagian dari proses evaluasi dan penutupan program pengelolaan hutan lestari...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita69.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita69.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Koperasi Desa</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Purwakarta Dukung Program Koperasi Desa Merah Putih di Kabupaten Purwakarta
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta mendukung program Koperasi Desa Merah Putih di Kabupaten Purwakarta. Kegiatan ini merupakan bagian dari program strategis nasional pemberdayaan desa...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita70.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita70.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Kerja Sama</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 28    , 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Purwakarta Dengan PT.Temp Solusi Kreasi Menandatangani Perjanjian Perpanjangan Kerjasama
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Purwakarta menandatangani perjanjian perpanjangan kerjasama dengan PT. Temp Solusi Kreasi. Kegiatan ini merupakan bagian dari program strategis nasional pemberdayaan desa...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita71.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita71.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Pangan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 08, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Sukabumi Hadiri Pelepasan Panen Raya Jagung Kuartal I 2026, Perkuat Ketahan Pangan Sukabumi
+                            </h5>
+                            <p class="m-0">Sebagai wujud dukungan terhadap program Swasembada Pangan Nasional, Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Sukabumi bersama Forum Koordinasi Pimpinan Daerah (Forkopimda) Kabupaten Sukabumi melaksanakan kegiatan Panen Raya Jagung Serentak...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita72.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita72.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Kerja Sama</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 20, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Sukabumi dan BPBD Kabupaten Sukabumi Perpanjang Kerja Sama Penanggulangan Bencana
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Sukabumi dan Badan Penanggulangan Bencana Daerah (BPBD) Kabupaten Sukabumi telah menandatangani perjanjian perpanjangan kerjasama dalam bidang penanggulangan bencana...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita73.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita73.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 12, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Sukabumi Bersama Mitra Sadap dan Warga Desa Bojonglopang Tanam Pohon Peringati Harlah ke-21
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya mengapresiasi kegiatan penanaman bersama yang dilaksanakan oleh Serikat Karyawan Perhutani (Sekar) dalam rangka memperingati Hari Lahir (Harlah) ke-21 Sekar Perhutani...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita74.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita74.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Keselamatan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 21, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Sukabumi Bersinergi dengan Damkar Sukabumi Perkuat Pengawasan APAR
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Sukabumi bersinergi dengan Dinas Damkar Kabupaten Sukabumi untuk memperkuat pengawasan APAR (Alat Pemadam Api Ringan) di wilayah hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita75.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita75.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Koperasi Desa</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 22, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Sukabumi Dukung Penguatan Ekonomi Desa Melalui Koperasi Desa Merah Putih
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Sukabumi mendukung penguatan ekonomi desa melalui koperasi desa Merah Putih...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita76.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita76.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Hari Bakti Desa Nasional</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 12, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Sukabumi Salurkan Ratusan Bibit Buah untuk Dukung Hari Bakti Desa Nasional 2026
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Sukabumi menyalurkan ratusan bibit buah untuk mendukung Hari Bakti Desa Nasional 2026...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita77.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita77.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Saka Wanabakti</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 25, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Sukabumi Dukung Regenerasi, Pinsaka Pimpin Pelantikan Anggota Saka Wanabakti
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Sukabumi mendukung regenerasi hutan dan memimpin pelantikan anggota Saka Wanabakti...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita78.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita78.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Koordinasi</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 27, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Sukabumi Bersama Pemkab Sukabumi Gelar Rapat Koordinasi Persiapan Tinjauan Lapangan Koperasi Desa Merah Putih
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Sukabumi bersama Pemerintah Kabupaten Sukabumi menggelar rapat koordinasi persiapan tinjauan lapangan koperasi desa Merah Putih...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita79.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita79.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 09, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Sumedang Tangani Pasca Longsor Desa Pamekarsari Dengan Penanaman Pohon Bersama Muspika Buahdua
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Sumedang dan Badan Penanggulangan Bencana Daerah (BPBD) Kabupaten Sumedang telah menandatangani perjanjian perpanjangan kerjasama dalam bidang penanggulangan bencana...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita80.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita80.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 05, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Tasikmalaya Dukung Gerakan Nasional GG Lestari 2026 di Pasir Datar Galunggung
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya telah memberikan dukungan terhadap Gerakan Nasional GG Lestari 2026 di wilayah Pasir Datar Galunggung...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita81.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita81.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Kerja Sama</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 06, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Tasikmalaya Perkuat Kerja Sama Pemanfaatan Jasa Lingkungan Bersama Pemerintah Kabupaten Tasikmalaya
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya dan Pemerintah Kabupaten Tasikmalaya telah menandatangani perjanjian kerjasama dalam bidang pemanfaatan jasa lingkungan  ...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita82.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita82.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 07, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Tasikmalaya Kembangkan Kebun Pangkas Pinus Bocor Getah
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya telah mengembangkan kebun pangkas pinus bocor getah sebagai bagian dari program peningkatan produksi hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita83.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita83.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Legalitas Usaha</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 07, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Tasikmalaya Dampingi Legalitas Usaha LMDH Kahirupan
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya telah memberikan bantuan hukum dan legalitas usaha kepada pengusaha LMDH (Lembaga Manajemen Desa Hutan) di wilayahnya...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita84.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita84.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Reforma Agraria</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 14, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Tasikmalaya Hadiri Sosialisasi Percepatan Reforma Agraria di Karangjaya
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya telah menghadiri sosialisasi percepatan reforma agraria di Karangjaya...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita85.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita85.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 14, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Tasikmalaya Laksanakan Penanaman Perdana Kebun Pangkas Pinus Bocor Getah
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya telah melaksanakan penanaman perdana kebun pangkas pinus bocor getah...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita86.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita86.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Wisata Alam</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 15, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Tasikmalaya Bahas Pengembangan Wisata Curug Badak Hanoman Bersama LMDH Kahuripan
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya dan Lembaga Masyarakat Desa Hutan (LMDH) Kahuripan telah membahas pengembangan wisata curug Badak Hanoman...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita87.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita87.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 19, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Tasikmalaya Kukuhkan Anggota Saka Wanabakti Angkatan ke-42
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya telah kukuhkan anggota Saka Wanabakti Angkatan ke-42...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita88.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita88.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 26, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Tasikmalaya Dukung Program Tasik Hejo, Dampingi Bupati dan Wakil Bupati dalam Aksi Tanam Pohon
+                            </h5>
+                            <p class="m-0">Perhutani KPH Tasikmalaya mendukung program Tasik Hejo, dengan mendampingi Bupati dan Wakil Bupati dalam aksi tanam pohon...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita89.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita89.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Hukum</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 29, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Sinergi Perhutani KPH Tasikmalaya dan Kejaksaan Negeri dalam Penanganan PTUN Guna Penguatan Tata Kelola Hutan
+                            </h5>
+                            <p class="m-0">Perum Perhutani Kesatuan Pemangkuan Hutan (KPH) Tasikmalaya dan Kejaksaan Negeri telah bekerja sama dalam penanganan PTUN guna penguatan tata kelola hutan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita90.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita90.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Hubungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 29, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Tasikmalaya dan CDK Wilayah VI Terima Silaturahmi Semarak Priatim
+                            </h5>
+                            <p class="m-0">Perhutani KPH Tasikmalaya dan CDK Wilayah VI menerima kunjungan silaturahmi dari Serikat Mahasiswa Rakyat Priangan Timur (Semarak Priatim)...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita91.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita91.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Hubungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 29, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Tasikmalaya Hadiri Peringatan Harlah ke-21 SEKAR Perhutani DPD Tasikmalaya
+                            </h5>
+                            <p class="m-0">KPH Tasikmalaya berpartisipasi aktif dalam peringatan Hari Lahir (Harlah) ke-21 Serikat Karyawan...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+              <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita92.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita92.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 29, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Dukung Ketahanan Pangan, KPH Sukabumi Hadiri Peluncuran Penanaman Jagung Serentak 750 Hektar di Palabuhanratu
+                            </h5>
+                            <p class="m-0">KPH Sukabumi hadir dalam peluncuran penanaman jagung serentak seluas 750 Hektar di Palabuhanratu...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+             <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita93.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita93.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Lingkungan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 29, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Dukung Swasembada Nasional, Perhutani Hadiri Penanaman Jagung Serentak Kuartal I di Bogor
+                            </h5>
+                            <p class="m-0">Perhutani hadir dalam kegiatan Penanaman Jagung Serentak Kuartal I di Bogor...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+             <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita94.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita94.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Pangan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 29, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Bogor Hadiri Penanaman Serentak Jagung Kuartal I Polri di Kecamatan Tenjo
+                            </h5>
+                            <p class="m-0">Perhutani Bogor hadir dalam kegiatan Penanaman Serentak Jagung Kuartal I di Kecamatan Tenjo...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+             <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita95.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita95.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Pangan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 30, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Indramayu Dukung Polres Indramayu Tanam Jagung Serentak
+                            </h5>
+                            <p class="m-0">Perhutani KPH Indramayu mendukung kegiatan penanaman jagung serentak di wilayah Polres Indramayu...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+             <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita96.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita96.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Pangan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 29, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani Kuningan Dukung Penanaman Jagung Serentak di Gunungkeling Kuningan
+                            </h5>
+                            <p class="m-0">KPH Kuningan hadir dalam peluncuran penanaman jagung serentak seluas 750 Hektar di Gunungkeling...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+             <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita97.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita97.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Pangan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 29, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Dukung Ketahanan Pangan, Perhutani Lakukan Peninjauan Lokasi KDMP di Cilimusari
+                            </h5>
+                            <p class="m-0">Perum Perhutani bersama unsur terkait melaksanakan kegiatan peninjauan lokasi KDMP...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- NEWS ITEM LIST 30 -->
+            <div class="col-12 mb-3">
+                <a href="article/berita98.html" style="text-decoration: none; color: inherit;">
+                    <div class="d-flex align-items-center bg-white border p-3">
+                        <img src="img/berita98.jpg" style="width: 180px; height: 120px; object-fit: cover;" alt="">
+                        <div class="pl-3 w-100">
+                            <div class="mb-2">
+                                <span class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2">Pendidikan</span>
+                                <small class="text-muted"><i class="fa fa-calendar-alt mr-1"></i> Jan 30, 2026</small>
+                            </div>
+                            <h5 class="font-weight-bold text-uppercase text-secondary">
+                                Perhutani KPH Purwakarta Berikan Edukasi PUHH kepada Mahasiswa Universitas Hiroshima
+                            </h5>
+                            <p class="m-0">Perum Perhutani KPH Purwakarta memberikan edukasi di bidang produksi dan Penatausahaan Hasil Hutan (PUHH) kepada mahasiswa Universitas Hiroshima...</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+                </div>
+                <!-- END NEWS ITEMS CONTAINER -->
+
+                <!-- LOAD MORE BUTTON -->
+                <div class="col-12 mb-5 text-center">
+                    <button id="loadMoreBtn" class="btn btn-primary btn-lg" onclick="loadMoreNews()">Muat Lainnya</button>
+                </div>
+            </div>
+            
+            <!-- SIDEBAR START -->
+            <div class="col-lg-4">
+                <!-- Social Follow Start -->
+                <div class="mb-3">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
+                    </div>
+                    <div class="bg-white border border-top-0 p-3">
+                        <a href="https://facebook.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                            <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <span class="font-weight-medium">85,234 Fans</span>
+                        </a>
+                        <a href="https://twitter.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+                            <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <span class="font-weight-medium">67,890 Followers</span>
+                        </a>
+                        <a href="https://linkedin.com/company/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+                            <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <span class="font-weight-medium">34,567 Connects</span>
+                        </a>
+                        <a href="https://instagram.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                            <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                            <span class="font-weight-medium">123,456 Followers</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Social Follow End -->
+
+                <!-- Trending News Start -->
+                <div class="mb-3">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">Trending News</h4>
+                    </div>
+                    <div class="bg-white border border-top-0 p-3">
+                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                            <a href="article/perhutani-majalengka.html">
+                                <img src="img/imgnews-700x435-5.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                            </a>
+                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary news-badge mr-2" href="">Ekonomi</a>
+                                    <a class="text-body" href=""><small>Jan 26, 2026</small></a>
+                                </div>
+                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/perhutani-majalengka.html">Perhutani KPH Majalengka Perkuat Sinergi...</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                            <a href="article/bojan-hodak.html">
+                                <img src="img/news-700x435-2.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                            </a>
+                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary news-badge mr-2" href="">Olahraga</a>
+                                    <a class="text-body" href=""><small>Jan 27, 2026</small></a>
+                                </div>
+                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/bojan-hodak.html">Pertimbangan Bojan Ogah Buru-buru Mainkan...</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                            <a href="article/masih-ingat-resbob.html">
+                                <img src="img/news-700x435-3.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                            </a>
+                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary news-badge mr-2" href="">Hukum</a>
+                                    <a class="text-body" href=""><small>Jan 20, 2026</small></a>
+                                </div>
+                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/masih-ingat-resbob.html">Masih Ingat Resbob? Tersangka Kasus...</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                            <a href="article/longsor-bandung.html">
+                                <img src="img/akang.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                            </a>
+                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary news-badge mr-2" href="">Ekonomi</a>
+                                    <a class="text-body" href=""><small>Jan 26, 2026</small></a>
+                                </div>
+                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/longsor-bandung.html">Warga Korban Longsor Cisarua Sempat Lihat...</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
+                            <a href="article/berita2.html">
+                                <img src="img/berita2.jpg" alt="" style="width: 120px; height: 110px; object-fit: cover;">
+                            </a>
+                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
+                                <div class="mb-2">
+                                    <a class="badge badge-primary news-badge mr-2" href="">Ekonomi</a>
+                                    <a class="text-body" href=""><small>Jan 26, 2026</small></a>
+                                </div>
+                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="article/berita2.html">Perhutani KPH Banten Dukung Program Strategis...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Trending News End -->
+            </div>
+            <!-- SIDEBAR END -->
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
+    <div class="row py-4">
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Indonesia Daily</h5>
+            <p class="font-weight-medium text-white"><i class="fa fa-map-marker-alt mr-2"></i>Jl. Merdeka No. 123, Jakarta Pusat, Indonesia 10110</p>
+            <p class="font-weight-medium text-white"><i class="fa fa-phone-alt mr-2"></i>+62 21 1234 5678</p>
+            <p class="font-weight-medium text-white"><i class="fa fa-envelope mr-2"></i><a href="https://mail.google.com/mail/?view=cm&fs=1&to=IndonesiaDaily33@gmail.com" target="_blank" class="text-white">IndonesiaDaily33@gmail.com</a></p>
+            <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
+            <div class="d-flex justify-content-start">
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://twitter.com/indonesiadaily" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://facebook.com/indonesiadaily" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://linkedin.com/company/indonesiadaily" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://instagram.com/indonesiadaily" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square" href="https://youtube.com/@indonesiadaily" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Berita Populer</h5>
+            <div class="mb-3">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Ekonomi</a>
+                    <a class="text-body" href=""><small>Jan 26, 2026</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="/article/perhutani-majalengka.html">Perhutani KPH Majalengka Perkuat Sinergi dengan Kodim...</a>
+            </div>
+            <div class="mb-3">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Olahraga</a>
+                    <a class="text-body" href=""><small>Jan 27, 2026</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="/article/bojan-hodak.html">Pertimbangan Bojan Ogah Buru-buru Mainkan Layvin Kurzawa...</a>
+            </div>
+            <div class="">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Ekonomi</a>
+                    <a class="text-body" href=""><small>Jan 27, 2026</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="/article/berita3.html">6 Kesaksian Ahok Blak-blakan di Sidang Kasus Minyak...</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Link Cepat</h5>
+            <div class="d-flex flex-column">
+                <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Beranda</a>
+                <a class="text-white mb-2" href="news.html"><i class="fa fa-angle-right mr-2"></i>Berita Terkini</a>
+                <a class="text-white mb-2" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Tentang Kami</a>
+                <a class="text-white mb-2" href="login.html"><i class="fa fa-angle-right mr-2"></i>Login</a>
+                <a class="text-white mb-2" href="register.html"><i class="fa fa-angle-right mr-2"></i>Daftar</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Kategori</h5>
+            <div id="footerCategories" class="d-flex flex-wrap m-n1">
+                <!-- populated dynamically by js/main.js -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
+    <p class="m-0 text-center text-white">&copy; 2026 <a href="index.html" class="text-primary">Indonesia Daily</a>. Portal Berita Terpercaya Indonesia. All Rights Reserved.</p>
+</div>
+<!-- Footer End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+<!-- JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Load News from articles.json -->
+<script src="js/load-news.js"></script>
+
+<!-- Authentication Script -->
+<script src="js/auth.js"></script>
+
+<!-- Load More Script -->
+<script>
+    // Configuration
+    const ITEMS_PER_PAGE = 10;
+    let currentPage = 1;
+    let totalItems = 0;
+    let newsItems = [];
+
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeLoadMore();
+    });
+
+    function initializeLoadMore() {
+        // Get all news items from newsContainer
+        const newsContainer = document.getElementById('newsContainer');
+        
+        // Get all direct child divs with class col-12 (these are the news items)
+        const allItems = newsContainer.querySelectorAll(':scope > div.col-12.mb-3');
+        
+        totalItems = allItems.length;
+        newsItems = Array.from(allItems);
+        
+        console.log('Total news items found:', totalItems);
+        
+        // Add class news-item to all news items
+        newsItems.forEach((item, index) => {
+            item.classList.add('news-item');
+            item.setAttribute('data-index', index);
+        });
+
+        // Hide items after first 10
+        hideItemsAfter(ITEMS_PER_PAGE);
+        
+        // Check if we need to show/hide the load more button
+        updateLoadMoreButton();
+    }
+
+    function hideItemsAfter(count) {
+        newsItems.forEach((item, index) => {
+            if (index >= count) {
+                item.classList.add('hidden');
+            } else {
+                item.classList.remove('hidden');
+            }
+        });
+    }
+
+    function loadMoreNews() {
+        currentPage++;
+        const itemsToShow = ITEMS_PER_PAGE * currentPage;
+        
+        // Show more items with animation
+        newsItems.forEach((item, index) => {
+            if (index < itemsToShow && item.classList.contains('hidden')) {
+                item.classList.remove('hidden');
+                // Add animation
+                item.style.animation = 'fadeIn 0.5s ease-in';
+            }
+        });
+
+        // Update button visibility
+        updateLoadMoreButton();
+        
+        console.log('Loaded until item:', itemsToShow);
+    }
+
+    function updateLoadMoreButton() {
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const itemsToShow = ITEMS_PER_PAGE * currentPage;
+        
+        if (itemsToShow >= totalItems) {
+            loadMoreBtn.classList.add('hidden');
+            console.log('All items loaded, hiding load more button');
+        } else {
+            loadMoreBtn.classList.remove('hidden');
+        }
+    }
+
+    // Add fade-in animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+
+<script>
+    const dateElement = document.getElementById("currentDate");
+
+    const today = new Date();
+
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    const formattedDate = today.toLocaleDateString('en-US', options);
+
+    dateElement.textContent = formattedDate;
+</script>
+
+</body>
+</html>

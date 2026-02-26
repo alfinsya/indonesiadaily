@@ -1,0 +1,25 @@
+# Netlify Configuration
+# Deploy configuration for Indonesia Daily
+
+[build]
+  # Command untuk build sebelum deploy
+  command = "node tools/generate.js"
+  
+  # Directory yang akan di-publish
+  publish = "."
+
+# Redirect untuk fallback ke index.html (Single Page App fallback)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Header security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"

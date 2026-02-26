@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>About Us - Indonesia Daily</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Informasi mengenai Indonesia Daily" name="keywords">
+    <meta content="Indonesia Daily adalah portal berita digital yang menyajikan informasi terkini dari berbagai daerah di Indonesia." name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block px-0">
+        <div class="row align-items-center bg-dark px-lg-5">
+            <div class="col-lg-9">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-n2">
+                        <li class="nav-item border-right border-secondary">
+                            <a class="nav-link text-body small" href="#" id="currentDate"></a>
+                        </li>
+                        <li class="nav-item border-right border-secondary" id="registerItem">
+                            <a class="nav-link text-body small" href="register.html">Register</a>
+                        </li>
+                        <li class="nav-item" id="loginItem">
+                            <a class="nav-link text-body small" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item border-right border-secondary d-none" id="userItem">
+                            <span class="nav-link text-body small" id="username"></span>
+                        </li>
+                        <li class="nav-item d-none" id="logoutItem">
+                            <a class="nav-link text-body small" href="#" onclick="logout()">Logout</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3 text-right d-none d-md-block">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-auto mr-n2">
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://twitter.com/indonesiadaily" target="_blank"><small class="fab fa-twitter"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://facebook.com/indonesiadaily" target="_blank"><small class="fab fa-facebook-f"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://linkedin.com/company/indonesiadaily" target="_blank"><small class="fab fa-linkedin-in"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://instagram.com/indonesiadaily" target="_blank"><small class="fab fa-instagram"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://mail.google.com/mail/u/0/" target="_blank"><small class="fa fa-envelope"></small></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-body" href="https://youtube.com/@indonesiadaily" target="_blank"><small class="fab fa-youtube"></small></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+<!-- Navbar Start -->
+<div class="container-fluid bg-white px-4 shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light">
+
+        <!-- LOGO KIRI (MEPET) -->
+        <a href="index.html" class="navbar-brand mr-5">
+            <img src="img/logo.png" alt="IndonesiaDaily" style="height: 45px;">
+        </a>
+
+        <!-- TOGGLER -->
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- MENU -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+            <!-- MENU TENGAH -->
+            <div class="navbar-nav mx-auto text-uppercase font-weight-bold">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="news.html" class="nav-item nav-link">News</a>
+                <a href="contact.html" class="nav-item nav-link active">About Us</a>
+            </div>
+
+<!-- SEARCH KANAN -->
+<form action="search.html" method="get">
+    <div class="input-group d-none d-lg-flex" style="width: 260px;">
+        <input type="text" name="q" class="form-control" placeholder="Cari berita...">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
+
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->
+
+    <!-- Contact Start -->
+    <div class="container-fluid mt-5 pt-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="section-title mb-0">
+                        <h4 class="m-0 text-uppercase font-weight-bold">About Us</h4>
+</div>
+
+<div class="bg-white border border-top-0 p-4 mb-3">
+    <h5 class="text-uppercase font-weight-bold mb-3">Tentang Indonesia Daily</h5>
+
+    <p class="font-weight-medium text-justify">
+Indonesia Daily adalah portal berita digital yang menyajikan informasi terkini dari berbagai daerah di
+Indonesia. Kami menghadirkan berita nasional, regional, hiburan, dan gaya hidup yang disusun secara
+faktual, berimbang, dan mudah diakses oleh masyarakat luas.
+</p>
+
+<p class="font-weight-medium text-justify">
+Sebagai media daring, Indonesia Daily berkomitmen menjadi sumber informasi yang relevan dan terpercaya
+dengan mengedepankan prinsip jurnalistik, akurasi data, serta penyajian informasi yang bertanggung jawab.
+Setiap konten yang dipublikasikan disusun berdasarkan sumber yang dapat dipertanggungjawabkan.
+</p>
+
+<p class="font-weight-medium text-justify">
+Indonesia Daily juga berupaya mengikuti perkembangan isu dan peristiwa yang terjadi di tengah masyarakat,
+baik di tingkat nasional maupun daerah, guna memberikan sudut pandang yang informatif dan bermanfaat
+bagi pembaca dalam memahami dinamika sosial, budaya, dan hiburan.
+</p>
+
+<p class="font-weight-medium text-justify">
+Melalui platform digital, Indonesia Daily hadir sebagai media informasi yang adaptif terhadap perkembangan
+teknologi serta kebutuhan pembaca, dengan tujuan menjadi referensi berita yang mudah diakses kapan pun
+dan di mana pun.
+</p>
+
+    <hr>
+
+    <h6 class="text-uppercase font-weight-bold mb-2">Fokus Pemberitaan</h6>
+    <ul class="list-unstyled font-weight-medium mb-0">
+        <li>- Berita Nasional dan Daerah</li>
+        <li>- Hiburan dan Selebriti</li>
+        <li>- Lifestyle dan Tren Digital</li>
+        <li>- Peristiwa dan Isu Aktual</li>
+    </ul>
+</div>
+</div> <!-- END col-lg-8 -->
+
+
+                <div class="col-lg-4">
+                    <!-- Social Follow Start -->
+<div class="mb-3">
+    <div class="section-title mb-0">
+        <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
+    </div>
+    <div class="bg-white border border-top-0 p-3">
+        <a href="https://facebook.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+            <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+            <span class="font-weight-medium">85,234 Fans</span>
+        </a>
+        <a href="https://twitter.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #52AAF4;">
+            <i class="fab fa-twitter text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+            <span class="font-weight-medium">67,890 Followers</span>
+        </a>
+        <a href="https://linkedin.com/company/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+            <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+            <span class="font-weight-medium">34,567 Connects</span>
+        </a>
+        <a href="https://instagram.com/indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+            <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+            <span class="font-weight-medium">123,456 Followers</span>
+        </a>
+        <a href="https://youtube.com/@indonesiadaily" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+            <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+            <span class="font-weight-medium">98,765 Subscribers</span>
+        </a>
+    </div>
+</div>
+<!-- Social Follow End -->
+
+                    <!-- Newsletter Start -->
+<div class="mb-3">
+    <div class="section-title mb-0"> 
+        <h4 class="m-0 text-uppercase font-weight-bold">Newsletter</h4>
+    </div>
+    <div class="bg-white text-center border border-top-0 p-3">
+        <p>Dapatkan berita terkini langsung di inbox Anda. Berlangganan newsletter Indonesia Daily sekarang!</p>
+        <form id="newsletterForm" action="#" method="post">
+            <div class="input-group mb-2" style="width: 100%;">
+                <input id="newsletterEmail" type="email" class="form-control form-control-lg" placeholder="Email Anda" required>
+                <div class="input-group-append">
+                    <button id="subscribeBtn" class="btn btn-primary font-weight-bold px-3" type="submit">Langganan</button>
+                </div>
+            </div>
+            <small>Gratis dan bisa berhenti kapan saja</small>
+        </form>
+    </div>
+</div>
+<!-- Newsletter End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Footer Start -->
+<div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
+    <div class="row py-4">
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Indonesia Daily</h5>
+            <p class="font-weight-medium text-white"><i class="fa fa-map-marker-alt mr-2"></i>Jl. Merdeka No. 123, Jakarta Pusat, Indonesia 10110</p>
+            <p class="font-weight-medium text-white"><i class="fa fa-phone-alt mr-2"></i>+62 21 1234 5678</p>
+            <p class="font-weight-medium text-white"><i class="fa fa-envelope mr-2"></i><a href="https://mail.google.com/mail/?view=cm&fs=1&to=IndonesiaDaily33@gmail.com" target="_blank" class="text-white">IndonesiaDaily33@gmail.com</a></p>
+            <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
+            <div class="d-flex justify-content-start">
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://twitter.com/indonesiadaily" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://facebook.com/indonesiadaily" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://linkedin.com/company/indonesiadaily" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://instagram.com/indonesiadaily" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-lg btn-secondary btn-lg-square" href="https://youtube.com/@indonesiadaily" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Berita Populer</h5>
+            <div class="mb-3">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Ekonomi</a>
+                    <a class="text-body" href=""><small>Jan 26, 2026</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="/article/perhutani-majalengka.html">Perhutani KPH Majalengka Perkuat Sinergi dengan Kodim...</a>
+            </div>
+            <div class="mb-3">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Olahraga</a>
+                    <a class="text-body" href=""><small>Jan 27, 2026</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="/article/bojan-hodak.html">Pertimbangan Bojan Ogah Buru-buru Mainkan Layvin Kurzawa...</a>
+            </div>
+            <div class="">
+                <div class="mb-2">
+                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Ekonomi</a>
+                    <a class="text-body" href=""><small>Jan 27, 2026</small></a>
+                </div>
+                <a class="small text-body text-uppercase font-weight-medium" href="/article/berita3.html">6 Kesaksian Ahok Blak-blakan di Sidang Kasus Minyak...</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Link Cepat</h5>
+            <div class="d-flex flex-column">
+                <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Beranda</a>
+                <a class="text-white mb-2" href="news.html"><i class="fa fa-angle-right mr-2"></i>Berita Terkini</a>
+                <a class="text-white mb-2" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Tentang Kami</a>
+                <a class="text-white mb-2" href="login.html"><i class="fa fa-angle-right mr-2"></i>Login</a>
+                <a class="text-white mb-2" href="register.html"><i class="fa fa-angle-right mr-2"></i>Daftar</a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-5">
+            <h5 class="mb-4 text-white text-uppercase font-weight-bold">Kategori</h5>
+            <div  id="footerCategories" class="d-flex flex-wrap m-n1">
+                <a href="" class="btn btn-sm btn-secondary m-1">Politik</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Ekonomi</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Olahraga</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Teknologi</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Pendidikan</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Kesehatan</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Lingkungan</a>
+                <a href="" class="btn btn-sm btn-secondary m-1">Hukum</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
+    <p class="m-0 text-center text-white">&copy; 2026 <a href="index.html" class="text-primary">Indonesia Daily</a>. Portal Berita Terpercaya Indonesia. All Rights Reserved.</p>
+</div>
+<!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Authentication Script -->
+    <script src="js/auth.js"></script>
+
+    <script>
+    const dateElement = document.getElementById("currentDate");
+
+    const today = new Date();
+
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    const formattedDate = today.toLocaleDateString('en-US', options);
+
+    dateElement.textContent = formattedDate;
+    </script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var emailEl = document.getElementById('newsletterEmail');
+        var email = emailEl ? emailEl.value.trim() : '';
+        if (email) {
+            alert('Terima kasih! Anda telah berlangganan: ' + email);
+            form.reset();
+        } else {
+            alert('Silakan masukkan alamat email yang valid.');
+        }
+    });
+});
+</script>
+
+</body>
+
+</html>

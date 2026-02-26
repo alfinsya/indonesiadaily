@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Authentication - Indonesia Daily</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .warning { background: #fff3cd; color: #856404; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 4px solid #667eea;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background: #5568d3;
+        }
+        .btn-danger {
+            background: #dc3545;
+        }
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        .btn-success {
+            background: #28a745;
+        }
+        .btn-success:hover {
+            background: #218838;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        tr:hover {
+            background: #f5f5f5;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .badge-success {
+            background: #28a745;
+            color: white;
+        }
+        .badge-danger {
+            background: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>ðŸ”§ Authentication Debugger</h1>
+    
+    <div class="card">
+        <h2>ðŸ“Š Current Status</h2>
+        <div id="currentStatus"></div>
+    </div>
+
+    <div class="card">
+        <h2>ðŸ’¾ LocalStorage Data</h2>
+        <div id="storageData"></div>
+    </div>
+
+    <div class="card">
+        <h2>ðŸ‘¥ Registered Users</h2>
+        <div id="usersList"></div>
+    </div>
+
+    <div class="card">
+        <h2>ðŸ”¨ Actions</h2>
+        <button class="btn btn-success" onclick="createTestUser()">âž• Create Test User</button>
+        <button class="btn" onclick="refreshData()">ðŸ”„ Refresh</button>
+        <button class="btn btn-danger" onclick="clearAll()">ðŸ—‘ï¸ Clear All Data</button>
+        <a href="index.html" class="btn">ðŸ  Go to Index</a>
+        <a href="login.html" class="btn">ðŸ” Go to Login</a>
+        <a href="register.html" class="btn">ðŸ“ Go to Register</a>
+    </div>
+
+    <div class="card">
+        <h2>ðŸ“ Console Logs</h2>
+        <pre id="consoleLogs"></pre>
+    </div>
+
+    <script>
+        let logs = [];
+
+        // Override console.log to capture logs
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            logs.push(args.join(' '));
+            updateConsoleLogs();
+        };
+
+        function updateConsoleLogs() {
+            document.getElementById('consoleLogs').textContent = logs.slice(-20).join('\n');
+        }
+
+        function refreshData() {
+            checkCurrentStatus();
+            displayStorageData();
+            displayUsersList();
+            console.log('ðŸ”„ Data refreshed');
+        }
+
+        function checkCurrentStatus() {
+            const statusDiv = document.getElementById('currentStatus');
+            const session = localStorage.getItem('userSession');
+            
+            if (!session) {
+                statusDiv.innerHTML = '<div class="status warning">âš ï¸ Not Logged In</div>';
+                return;
+            }
+
+            try {
+                const userData = JSON.parse(session);
+                
+                if (userData && userData.name && userData.email) {
+                    statusDiv.innerHTML = `
+                        <div class="status success">
+                            âœ… Logged In as: <strong>${userData.name}</strong><br>
+                            ðŸ“§ Email: ${userData.email}<br>
+                            ðŸ• Login Time: ${new Date(userData.loginTime).toLocaleString()}
+                        </div>
+                    `;
+                } else {
+                    statusDiv.innerHTML = '<div class="status error">âŒ Invalid session data (missing fields)</div>';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<div class="status error">âŒ Corrupted Session: ${error.message}</div>`;
+            }
+        }
+
+        function displayStorageData() {
+            const dataDiv = document.getElementById('storageData');
+            let html = '<table>';
+            html += '<tr><th>Key</th><th>Status</th><th>Value</th></tr>';
+
+            const keys = ['users', 'userSession'];
+            
+            keys.forEach(key => {
+                const value = localStorage.getItem(key);
+                const status = value ? 
+                    '<span class="badge badge-success">âœ“ EXISTS</span>' : 
+                    '<span class="badge badge-danger">âœ— NOT FOUND</span>';
+                
+                let displayValue = 'N/A';
+                if (value) {
+                    try {
+                        const parsed = JSON.parse(value);
+                        displayValue = '<pre>' + JSON.stringify(parsed, null, 2) + '</pre>';
+                    } catch (e) {
+                        displayValue = '<span style="color: red;">CORRUPTED: ' + value.substring(0, 50) + '...</span>';
+                    }
+                }
+                
+                html += `<tr><td><code>${key}</code></td><td>${status}</td><td>${displayValue}</td></tr>`;
+            });
+
+            html += '</table>';
+            dataDiv.innerHTML = html;
+        }
+
+        function displayUsersList() {
+            const listDiv = document.getElementById('usersList');
+            const usersString = localStorage.getItem('users');
+            
+            if (!usersString) {
+                listDiv.innerHTML = '<div class="status info">â„¹ï¸ No registered users found</div>';
+                return;
+            }
+
+            try {
+                const users = JSON.parse(usersString);
+                
+                if (users.length === 0) {
+                    listDiv.innerHTML = '<div class="status info">â„¹ï¸ No registered users</div>';
+                    return;
+                }
+
+                let html = '<table>';
+                html += '<tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Registered</th></tr>';
+                
+                users.forEach((user, index) => {
+                    html += `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${user.fullname || 'N/A'}</td>
+                            <td>${user.email || 'N/A'}</td>
+                            <td>${user.phone || 'N/A'}</td>
+                            <td>${user.registeredAt ? new Date(user.registeredAt).toLocaleString() : 'N/A'}</td>
+                        </tr>
+                    `;
+                });
+                
+                html += '</table>';
+                html += `<div class="status success">âœ… Total: ${users.length} user(s)</div>`;
+                listDiv.innerHTML = html;
+            } catch (error) {
+                listDiv.innerHTML = `<div class="status error">âŒ Error parsing users: ${error.message}</div>`;
+            }
+        }
+
+        function createTestUser() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            const testUser = {
+                fullname: 'Test User',
+                email: 'test@example.com',
+                phone: '08123456789',
+                password: 'test123',
+                registeredAt: new Date().toISOString()
+            };
+            
+            // Check if already exists
+            if (users.find(u => u.email === testUser.email)) {
+                alert('âŒ Test user already exists!\nEmail: test@example.com\nPassword: test123');
+                return;
+            }
+            
+            users.push(testUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            alert('âœ… Test user created!\nEmail: test@example.com\nPassword: test123');
+            console.log('âœ… Test user created');
+            refreshData();
+        }
+
+        function clearAll() {
+            if (!confirm('âš ï¸ This will delete ALL data!\n\nContinue?')) {
+                return;
+            }
+            
+            localStorage.clear();
+            alert('âœ… All data cleared!');
+            console.log('ðŸ—‘ï¸ All data cleared');
+            refreshData();
+        }
+
+        // Initial load
+        window.onload = function() {
+            console.log('ðŸš€ Test page loaded');
+            refreshData();
+        };
+    </script>
+</body>
+</html>

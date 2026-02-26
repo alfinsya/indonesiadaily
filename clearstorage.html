@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Storage - Indonesia Daily</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .status {
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px 5px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn-secondary {
+            background: #6c757d;
+        }
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .info strong {
+            color: #667eea;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ðŸ§¹ Clear Storage</h1>
+        <p>Gunakan halaman ini untuk membersihkan localStorage dan memperbaiki masalah authentication.</p>
+        
+        <div id="statusDiv"></div>
+        
+        <div class="info">
+            <strong>â„¹ï¸ Kapan harus clear storage?</strong><br>
+            â€¢ Tidak bisa login/register<br>
+            â€¢ Tombol logout tidak muncul<br>
+            â€¢ Error "Anda sudah login" tapi tidak ada nama user<br>
+            â€¢ Infinite redirect loop
+        </div>
+        
+        <button class="btn" onclick="clearStorage()">ðŸ—‘ï¸ Clear Storage Now</button>
+        <a href="index.html" class="btn btn-secondary">ðŸ  Back to Home</a>
+        
+        <div id="storageInfo" style="margin-top: 30px; text-align: left; font-size: 14px;"></div>
+    </div>
+
+    <script>
+        // Show current storage status
+        function showStorageStatus() {
+            const infoDiv = document.getElementById('storageInfo');
+            const users = localStorage.getItem('users');
+            const session = localStorage.getItem('userSession');
+            
+            let html = '<strong>ðŸ“¦ Current Storage:</strong><br>';
+            html += '<code>users:</code> ' + (users ? 'âœ… Found (' + JSON.parse(users).length + ' users)' : 'âŒ Not found') + '<br>';
+            html += '<code>userSession:</code> ' + (session ? 'âœ… Found' : 'âŒ Not found');
+            
+            if (session) {
+                try {
+                    const sessionData = JSON.parse(session);
+                    html += '<br>â”œâ”€ Name: ' + sessionData.name;
+                    html += '<br>â””â”€ Email: ' + sessionData.email;
+                } catch (e) {
+                    html += '<br><span style="color: red;">âš ï¸ Session corrupted!</span>';
+                }
+            }
+            
+            infoDiv.innerHTML = html;
+        }
+        
+        // Clear storage function
+        function clearStorage() {
+            const statusDiv = document.getElementById('statusDiv');
+            
+            // Show warning
+            if (!confirm('âš ï¸ PERINGATAN!\n\nIni akan menghapus:\nâ€¢ Semua akun yang terdaftar\nâ€¢ Session login yang aktif\n\nAnda harus register ulang setelah ini.\n\nLanjutkan?')) {
+                return;
+            }
+            
+            try {
+                // Clear localStorage
+                localStorage.clear();
+                
+                // Show success message
+                statusDiv.innerHTML = '<div class="status success">âœ… Storage berhasil dibersihkan!<br>Silakan register akun baru atau login kembali.</div>';
+                
+                // Update storage info
+                showStorageStatus();
+                
+                // Auto redirect after 3 seconds
+                setTimeout(() => {
+                    window.location.href = 'register.html';
+                }, 3000);
+                
+            } catch (error) {
+                statusDiv.innerHTML = '<div class="status warning">âš ï¸ Error: ' + error.message + '</div>';
+            }
+        }
+        
+        // Show storage status on load
+        window.onload = function() {
+            showStorageStatus();
+            
+            // Check if there's a corrupted session
+            const session = localStorage.getItem('userSession');
+            if (session) {
+                try {
+                    JSON.parse(session);
+                } catch (e) {
+                    document.getElementById('statusDiv').innerHTML = 
+                        '<div class="status warning">âš ï¸ Session corrupted terdeteksi!<br>Silakan clear storage untuk memperbaiki.</div>';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
