@@ -1,19 +1,19 @@
-{
-  "name": "indonesiadaily-article-generator",
+﻿{
+  "name": "seputarpurwasuka-article-generator",
   "version": "1.0.0",
-  "description": "Generator artikel otomatis dari Google Sheets untuk Indonesia Daily",
+  "description": "Generator artikel otomatis dari Google Sheets untuk Seputar Purwasuka",
   "main": "generate.js",
   "scripts": {
     "generate": "node generate.js",
     "start": "node generate.js"
   },
   "keywords": [
-    "indonesiadaily",
+    "seputarpurwasuka",
     "generator",
     "google-sheets",
     "html"
   ],
-  "author": "Indonesia Daily Team",
+  "author": "Seputar Purwasuka Team",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.0",
